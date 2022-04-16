@@ -52,16 +52,3 @@ class Logger:
         out = f'{header}{dc_ec(params)}{msg}{dc_ec("-clc")}'
 
         print(out)
-        
-
-log = Logger()
-
-lg = log.Log
-
-log.Log("WARN something is wrong, maybe take a look -U")
-log.Log("ERROR You really messed something up")
-log.Log("PASS All tests passed")
-
-lg("MSG Just wanted to say hi!")
-
-lg("OK Everything is OKAY! -I")
