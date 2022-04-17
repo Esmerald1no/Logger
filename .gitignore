@@ -1,0 +1,7 @@
+/dist/**
+/LICENSE.txt
+/pyproject.toml
+/README.md
+/setup.cfg
+/src/Logger/__init__.py
+/Logger_Esmerald1no.egg-info/**

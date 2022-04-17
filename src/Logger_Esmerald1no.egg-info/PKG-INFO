@@ -1,0 +1,26 @@
+Metadata-Version: 2.1
+Name: Logger-Esmerald1no
+Version: 0.0.1
+Summary: A small logger package
+Home-page: https://github.com/pypa/sampleproject
+Author: Esmerald1no
+License: UNKNOWN
+Project-URL: Bug Tracker, https://github.com/Esmerald1no/Logger
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: Apache-2.0
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# Logger
+Logger Module for my projects, but feel free to use it.
+
+Features support for basic formatting (Bold, Underline, Italic, and Font Color) for messages.
+
+Compatible with most terminals.
+
+Requires Python 3.10 or higher.
+
+
