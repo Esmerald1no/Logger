@@ -61,5 +61,5 @@ if __name__ == "__main__":
     if version_info <(3,10):
         print("Your current Python version is: {version_info[0]}.{version_info[1]}.\n Please upgrade to version 3.10 or higher.")
     else:
-        "A Basic Logging Module with Formatting."
+        print("A Basic Logging Module with Formatting.")
     exit()
