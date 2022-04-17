@@ -1,5 +1,3 @@
-
-
 def decode_encode(code:str)->str:
     
     def ansi_encoder(esc_code: str) -> str: return f"\033[{esc_code}m"
@@ -57,3 +55,11 @@ class Logger:
         out = f'{header}{params}{msg}{dc_ec("-clc")}'
 
         print(out)
+
+if __name__ == "__main__":
+    from sys import version_info, exit
+    if version_info <(3,10):
+        print("Your current Python version is: {version_info[0]}.{version_info[1]}.\n Please upgrade to version 3.10 or higher.")
+    else:
+        "A Basic Logging Module with Formatting."
+    exit()
