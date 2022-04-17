@@ -4,23 +4,23 @@ def ansi_encoder(esc_code: str) -> str: return f"\033[{esc_code}m"
 
 def decode_encode(code:str)->str:
         match code:
-            case "-b"|"-B":
-                return ansi_encoder("1")
-            case "-i"|"-I":
-                return ansi_encoder("3")
-            case "-u"|"-U":
-                return ansi_encoder("4")
-            case "-clc":
+            case "-clc": #Removes all formatting.
                 return ansi_encoder("0")
-            case "-r"|"-R":
+            case "-b"|"-B": #Sets Text to Bold.
+                return ansi_encoder("1")
+            case "-i"|"-I": #Sets Text to Italic.
+                return ansi_encoder("3") 
+            case "-u"|"-U": #Sets Text to Underlined.
+                return ansi_encoder("4")
+            case "-r"|"-R": #Sets font color to Red.
                 return ansi_encoder("91")
-            case "-g"|"-G":
+            case "-g"|"-G": #Sets font color to Green.
                 return ansi_encoder("92")
-            case "-y"|"-Y":
+            case "-y"|"-Y": #Sets font color to Yellow.
                 return ansi_encoder("93")
-            case "-c"|"-C":
+            case "-c"|"-C": #Sets font color to Cyan.
                 return ansi_encoder("96")
-            case _:
+            case _: #Wildcard
                 return ""
 
 
