@@ -34,7 +34,7 @@ class Logger:
         msg_list = input.split(" ")
         msg_type = msg_list.pop(0)
         msg = " ".join([m for m in msg_list if "-" not in m])
-        params = [p for p in msg_list if "-" in p]
+        params_list = [p for p in msg_list if "-" in p]
 
         dc_ec = decode_encode
         match msg_type:
@@ -48,7 +48,11 @@ class Logger:
                 header = f'{dc_ec("-b")}{dc_ec("-u")}{dc_ec("-c")}OK{dc_ec("-clc")}{dc_ec("-c")}: '
             case _:
                 header = f'{dc_ec("-b")}{dc_ec("-u")}{str(msg_type)}{dc_ec("-clc")}: '
+        
+        params = ""
+        for param in params_list:
+            params += dc_ec(param)
 
-        out = f'{header}{dc_ec(params)}{msg}{dc_ec("-clc")}'
+        out = f'{header}{params}{msg}{dc_ec("-clc")}'
 
         print(out)
