@@ -22,6 +22,20 @@ def decode_encode(code:str)->str:
         case _: #Wildcard
             return ""
 
+def sanitize(msg:list) -> list:
+    sanitized_msg = []
+    for word in msg:
+        match word:
+            case '"':
+                sanitized_msg.append("\"")
+            case "'":
+                sanitized_msg.append("\'")
+            case "\n"|"\t"|"\r"|"\b"|"\f"|"\\":
+                continue
+            case _:
+                sanitized_msg.append(str(word))
+    
+    return sanitized_msg
 
 class Logger:
     
@@ -30,7 +44,7 @@ class Logger:
 
     @staticmethod
     def Log(input:str):
-        msg_list = input.split(" ")
+        msg_list = sanitize(input.split(" "))
         msg_type = msg_list.pop(0)
         msg = " ".join([m for m in msg_list if "-" not in m])
         params_list = [p for p in msg_list if "-" in p]
