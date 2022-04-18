@@ -42,7 +42,7 @@ def sanitize(msg:list) -> list:
             case _:
                 sanitized_msg.append(str(word))
     
-    return sanitized_msg
+    return sanitized_msg, len(sanitized_msg)
 
 class Logger:
     
@@ -50,11 +50,17 @@ class Logger:
         pass
 
     @staticmethod
-    def Log(input:str):
-        msg_list = sanitize(input.split(" "))
-        msg_type = msg_list.pop(0)
-        msg = " ".join([m for m in msg_list if "-" not in m])
-        params_list = [p for p in msg_list if "-" in p]
+    def Log(input:str = None):
+        if input is None: input = ""
+
+        msg_list, msg_length = sanitize(input.split(" "))
+
+        if msg_length <=1:
+            msg_type,msg = ("WARN","No Message Provided for Logger. Double-check input.")
+        else:
+            msg_type = msg_list.pop(0).capitalize()
+            msg = " ".join([m for m in msg_list if "-" not in m])
+            params_list = [p for p in msg_list if "-" in p]
 
         dc_ec = decode_encode
         match msg_type:
