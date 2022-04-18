@@ -1,3 +1,6 @@
+from asyncio.log import logger
+
+
 def decode_encode(code:str)->str:
     
     def ansi_encoder(esc_code: str) -> str: return f"\033[{esc_code}m"
@@ -11,6 +14,10 @@ def decode_encode(code:str)->str:
             return ansi_encoder("3") 
         case "-u"|"-U": #Sets Text to Underlined.
             return ansi_encoder("4")
+        case "-s"|"-S": #Sets Text to Strikethrough.
+            return ansi_encoder("9")
+        case "-gr"|"-GR": #Sets font color to Gray.
+            return ansi_encoder("90")
         case "-r"|"-R": #Sets font color to Red.
             return ansi_encoder("91")
         case "-g"|"-G": #Sets font color to Green.
@@ -59,6 +66,8 @@ class Logger:
                 header = f'{dc_ec("-b")}{dc_ec("-u")}{dc_ec("-g")}{msg_type}{dc_ec("-clc")}{dc_ec("-g")}: '
             case "OKAY"|"OK":
                 header = f'{dc_ec("-b")}{dc_ec("-u")}{dc_ec("-c")}OK{dc_ec("-clc")}{dc_ec("-c")}: '
+            case "DEPRICATED"|"DEPR":
+                header = f'{dc_ec("-b")}{dc_ec("-u")}{dc_ec("-gr")}DEPRICATED{dc_ec("-clc")}{dc_ec("-gr")}{dc_ec("-s")}: '
             case _:
                 header = f'{dc_ec("-b")}{dc_ec("-u")}{str(msg_type)}{dc_ec("-clc")}: '
         
