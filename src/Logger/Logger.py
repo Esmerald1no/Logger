@@ -1,6 +1,3 @@
-from asyncio.log import logger
-
-
 def decode_encode(code:str)->str:
     
     def ansi_encoder(esc_code: str) -> str: return f"\033[{esc_code}m"
@@ -10,6 +7,8 @@ def decode_encode(code:str)->str:
             return ansi_encoder("0")
         case "-b"|"-B": #Sets Text to Bold.
             return ansi_encoder("1")
+        case "-f"|"-F":
+            return ansi_encoder("2")
         case "-i"|"-I": #Sets Text to Italic.
             return ansi_encoder("3") 
         case "-u"|"-U": #Sets Text to Underlined.
